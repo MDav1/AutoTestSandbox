@@ -1,4 +1,4 @@
-import { googleAPIUrl } from "../../utils/helper";
+import { googleAPIUrl } from "../../utils/products";
 
 describe('Task 1', () => {
 

@@ -1,5 +1,3 @@
-export const googleAPIUrl = "https://storage.googleapis.com/mannequin/2018/data/productwall/accessories/en_us.json?c=1571310916";
-
 export const isSuperSet = (set, subSet) => {
     for (let elem of subSet) {
     if (!set.has(elem)) {

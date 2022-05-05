@@ -1,4 +1,4 @@
-import { When, Then, Given } from 'cypress-cucumber-preprocessor/steps'
+import { When, Then, Given } from 'cypress-cucumber-preprocessor/steps';
 import Chance from "chance";
 import {currencyBase, randCurr, rateOfCurr, baseUrl} from "../../utils/curency";
 
