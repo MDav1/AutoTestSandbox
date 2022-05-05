@@ -24,17 +24,27 @@ When('I select the product', () => {
         cy.get(prodctEnum.PRODUCT_HREF[i]).should('exist'); // check that item exists
         cy.get(prodctEnum.PRODUCT_HREF[i]).parent().click().wait(3000); // click on a found item
         cy.get(prodctEnum.PRODUCT_PRICE_SELECTOR).invoke('text')
-            .then((price) => cy.wrap(price)).then((price) => prodctEnum.PRICE_ARRAY.push(price)); //Save the price
+            .then((price) => cy.wrap(price)).then((price) => prodctEnum.PRICE_ARRAY.push(price)); // save the price
         // cy.get(prodctEnum.PRODUCT_PRICE_SELECTOR).invoke('text')
         //     .then((price) => cy.wrap(price)).as('textPrice'); // works to save the price for one item
         cy.get(prodctEnum.BUY_BUTTON_SELECTOR).click({ force: true }).wait(3000); // click buy
         // check if color exists
         cy.get('body').then((body) => {
             if (body.find(prodctEnum.COLOR_VARIANT_CHECK_SELECTOR).length > 0) {
-                cy.get(prodctEnum.COLOR_BUTTON[i]).click();
-                cy.get(prodctEnum.BUY_BOTTON_WITH_COLOR).click().wait(3000);
-                let productColor = prodctEnum.COLOR_BUTTON[i].slice(0, -1).match(/(?<=color: ).*$/); // get color's name
-                prodctEnum.COLOR_NAME.push(productColor[0]); // save solor's name in the array
+                cy.get(prodctEnum.COLOR_VARIANT_CHECK_SELECTOR).children()
+                    // click a random color button
+                    .then(($button) => {
+                        const items = $button.toArray()
+                        return Cypress._.sample(items)
+                    }).click()
+                cy.get(prodctEnum.SELECTED_COLOR_NAME).invoke('text') // save selected color
+                    .then((color) => cy.wrap(color))
+                    .then((color) => prodctEnum.COLOR_NAME.push(color)); 
+                cy.get(prodctEnum.BUY_BOTTON_WITH_COLOR).click().wait(3000); // click buy
+                //  below code if color button is enum
+                // cy.get(prodctEnum.COLOR_BUTTON[i]).click();
+                // let productColor = prodctEnum.COLOR_BUTTON[i].slice(0, -1).match(/(?<=color: ).*$/); // get color's name
+                // prodctEnum.COLOR_NAME.push(productColor[0]); // save solor's name in the array
             }
             else {
                 prodctEnum.COLOR_NAME.push(""); // if color not exists save empty value in the array
