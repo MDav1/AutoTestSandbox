@@ -71,7 +71,7 @@ Then('I check expected product is presented in the cart', () => {
     }
 })
 
-Then('I remove items from the card', () => {
+And('I remove items from the card', () => {
     for (let i = 0; i < prodctEnum.PRODUCT_NAME_VALUE.length; i++) {
         cy.get(prodctEnum.REMOVE_BUTTON_SELECTOR).eq(i).click();
     }

@@ -18,8 +18,10 @@ const prodctEnum = Object.freeze({
     QTY_IN_CART_EXPECTED: '1',
     REMOVE_BUTTON_SELECTOR: '.h6uIYc',
     CONTINUE_SHOPPING_BUTTON_SELECTOR:'.WpHeLc',
+    TOTAL_PRICE_SELECTOR: '.jhB0af > span',
     PRICE_ARRAY: [],
     COLOR_NAME: [],
+    CHANGED_QTY: [],
     
 });
 
