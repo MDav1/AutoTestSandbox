@@ -1,3 +1,4 @@
+@GoogleStoreTest
 Feature: Change quntity of products in the cart
     Scenario: User is able to change quntity of products in the cart
         Given I am on the Accessories page

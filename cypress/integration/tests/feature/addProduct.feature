@@ -1,3 +1,4 @@
+@GoogleStoreTest
 Feature: Add product to the card
     Scenario: User is able to add single and multiple color product to the card
         Given I am on the Accessories page
