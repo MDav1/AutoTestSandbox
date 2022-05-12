@@ -31,6 +31,19 @@ class Products extends addProductBase {
             }
         }
     }
+
+    getProductNameFromAPI() {
+        cy.request(googleAPIUrl)
+            .then((response) => { cy.get(response.body.products) })
+            .then((data) => {
+                let productName = [...data].map((element) => { // getting array of names
+                    if (`${element.display_name}` == prodctEnum.PRODUCT_NAME_VALUE[0])
+                        return `${element.display_name}`;
+                }).filter(Boolean).toString();
+                console.log(productName)
+                return productName;
+            });
+    }
 }
 
 export default new Products;
